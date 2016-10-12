@@ -1,16 +1,25 @@
-!!!5
+!!!
 %html
-  %head
-    %title LikeImage | Inspire-se
-    = csrf_meta_tags
-    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
-    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
-  %body
-    - if user_signed_in?
-      %p= "Welcome #{current_user.name}"
-      = link_to 'Sair', destroy_user_session_path, :method => :delete
-      = link_to "Nova Inspiração", new_post_path
-    - else
-      = link_to 'Entrar', new_user_session_path
-      = link_to 'Criar Conta', new_user_registration_path
+%head
+  %title Like-Image
+  = stylesheet_link_tag    'application', media: 'all'
+  = javascript_include_tag 'application'
+  %link{:rel => "stylesheet", :href => "http://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.1/normalize.min.css"}
+  %link{:rel => "stylesheet", :href => "http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"}
+  = csrf_meta_tags
+%body
+  %header
+    .wrapper.clearfix
+      #logo= link_to "Like-Image", root_path
+      %nav
+        - if user_signed_in?
+          = link_to current_user.name, edit_user_registration_path
+          = link_to "Sair", destroy_user_session_path, method: :delete
+          = link_to "Add Nova Inspiração", new_post_path, class: "button"
+        - else
+          = link_to "Entrar", new_user_session_path
+          = link_to "Cadastrar", new_user_registration_path, class: "button"
+  %p.notice= notice
+  %p.alert= alert
+  .wrapper
     =yield
