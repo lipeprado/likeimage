@@ -1,28 +1,45 @@
-= image_tag @post.image.url(:medium)
-%h1= @post.title
-%p= "Criado por: " + " #{@post.user.name} "
-%p= @post.link
-%p= @post.description
-%p
-  = @post.get_upvotes.size
-  Gostei
-%p
-  = @post.get_downvotes.size
-  Não Gostei
-= link_to "Gostei", curtir_post_path(@post), method: :get
-= link_to "Não Gostei", descurtir_post_path(@post), method: :get
+#post_show
+  %h1= @post.title
+  %p.username
+    Criado por
+    = @post.user.name
+    | Postado há
+    = time_ago_in_words(@post.created_at)
+  .clearfix
+    .post_image_description
+      = image_tag @post.image.url(:medium)
+      .description= simple_format(@post.description)
 
+    .post_data
+      = link_to "Visite o Link", @post.link, target: "_blank", class: "button"
+      = link_to curtir_post_path(@post), method: :get, class: "data" do
+        %i.fa.fa-thumbs-o-up
+        = pluralize(@post.get_upvotes.size, "Curtida")
+      = link_to descurtir_post_path(@post), method: :get, class: "data" do
+        %i.fa.fa-thumbs-o-down
+        = pluralize(@post.get_downvotes.size, "Descurtidas")
+      %p.data
+        %i.fa.fa-comments-o
+        = pluralize(@post.comments.count, "Comentario")
+      - if @post.user == current_user
+        = link_to "Editar", edit_post_path(@post), class: "data"
+        = link_to "Deletar", post_path(@post), method: :delete, data: { confirm: "Você tem certeza?"}, class: "data"
+        = link_to "Voltar", root_path, class: "data"
+      - else
+        = link_to "Voltar", root_path, class: "data"
 
-#comment
-  %h2.comment_count= pluralize(@post.comments.count, "Comentario")
-  - @comments.each do |comment|
-    .comment
-      %p.username= comment.user.name
-      %p.content= comment.content
+#comments
+  - if user_signed_in?
+    - if @post.comments.count > 1
+      %h2.comment_count= pluralize(@post.comments.count, "Comentarios")
+    - else
+      %h2.comment_count= pluralize(@post.comments.count, "Comentario")
 
-  = render 'comments/form'
+      - @comments.each do |comment|
+        .comment
+          %p.username= comment.user.name
+          %p.content= comment.content
 
-
-= link_to "Voltar", root_path
-= link_to "Editar", edit_post_path(@post)
-= link_to "Deletar", post_path(@post), method: :delete, data: { confirm: "Você tem certeza?" }
+      = render 'comments/form'
+  - else
+    = link_to "Cadastre-se para ler os comentarios", new_user_registration_path, class: "logout"

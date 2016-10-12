@@ -118,6 +118,19 @@
 		padding-bottom: .5rem;
 		margin-bottom: 0;
 	}
+  a{
+    text-decoration: none;
+  }
+  .logout{
+    color: #50A7C7;
+    font-style: italic;
+    font-size: 1.2rem;
+    padding: 0 1.2rem;
+    margin: 0;
+    text-decoration: none;
+    text-align: center;
+  }
+
 	.comment {
 		padding: 2rem 0;
 		border-bottom: 1px solid #E9E9E9;
@@ -131,6 +144,7 @@
 			margin: 0;
 			color: #969696;
 		}
+
 	}
 	.comment_content {
 		margin-top: 2.5rem;
