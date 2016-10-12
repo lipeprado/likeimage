@@ -3,7 +3,6 @@ source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.0', '>= 5.0.0.1'
-gem 'sqlite3'
 gem 'puma', '~> 3.0'
 gem 'sass-rails', '~> 5.0'
 gem 'jquery-rails'
@@ -17,6 +16,7 @@ gem 'acts_as_votable', '~> 0.10.0'
 gem 'will_paginate', '~> 3.1', '>= 3.1.3'
 
 group :development, :test do
+  gem 'sqlite3'
   gem 'byebug', platform: :mri
 end
 
@@ -28,3 +28,7 @@ group :development do
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+group :production do
+  gem 'pg'
+end

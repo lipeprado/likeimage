@@ -57,7 +57,7 @@ h1, h2, h3, h4, h5, h6 {
     text-decoration: none;
     padding: .4rem;
     font-size: 1rem;
-    border-radius: 5px;
+    border-radius: 3px;
   }
   .current{
     background-color: #50A7C7;
@@ -65,12 +65,44 @@ h1, h2, h3, h4, h5, h6 {
     text-decoration: none;
     font-size: 1rem;
     padding: .4em;
-    border-radius: 5px;
+    border-radius: 3px;
   }
 }
+.form_main{
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+
+  form{
+    width: 100%;
+    input, textarea{
+      width: 100%;
+      padding: .4rem 0;
+  		padding-left: 1%;
+      margin: 10px 0;
+    }
+    input[type="submit"]{
+      margin-left: 1%;
+      width: 100%;
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 .wrapper {
 	width: 80%;
-	margin:0 auto 80px auto;
+	margin:0 auto;
 }
 
 .clearfix:before, .clearfix:after {
