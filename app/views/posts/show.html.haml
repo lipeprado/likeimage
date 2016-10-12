@@ -1,6 +1,8 @@
 %h1= @post.title
+%p= "Criado por: " + " #{@post.user.name} "
 %p= @post.link
 %p= @post.description
+
 
 = link_to "Voltar", root_path
 = link_to "Editar", edit_post_path(@post)
