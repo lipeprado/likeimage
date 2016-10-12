@@ -3,11 +3,13 @@ class PostsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
 
   def index
-    @posts = Post.all.order("created_at DESC")
+    @posts = Post.all.order("created_at DESC").paginate(page: params[:page], per_page:6)
   end
 
   def show
     @comments = Comment.where(post_id: @post).order("created_at DESC")
+    @random_post = Post.where.not(id: @post).order("RANDOM()").first
+    @another_post = Post.where.not(id: @post, id: @random_post).order("RANDOM()").first
   end
 
 

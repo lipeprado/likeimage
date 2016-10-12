@@ -13,3 +13,11 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+
+$(document).ready(function(){
+  setTimeout(function(){
+    $('#notice_wrapper, #alert_wrapper').fadeOut("slow", function(){
+      $(this).remove();
+    })
+  }, 4500);
+});

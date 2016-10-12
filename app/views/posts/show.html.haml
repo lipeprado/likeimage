@@ -28,6 +28,48 @@
       - else
         = link_to "Voltar", root_path, class: "data"
 
+    #random_post
+      %h3 Outras Inspirações
+      .post
+        .post_image
+          = link_to (image_tag @random_post.image.url(:small)), post_path(@random_post)
+        .post_content
+          .title
+            %h2= link_to @random_post.title, post_path(@random_post)
+          .data.clearfix
+            %p.username
+              Criado por
+              = @random_post.user.name
+            %p.buttons
+              %span
+                %i.fa.fa-comments-o
+                = @random_post.comments.count
+              %span
+                %i.fa.fa-thumbs-o-up
+                = @random_post.get_upvotes.size
+      %br
+
+      .post
+        .post_image
+          = link_to (image_tag @another_post.image.url(:small)), post_path(@another_post)
+        .post_content
+          .title
+            %h2= link_to @another_post.title, post_path(@another_post)
+          .data.clearfix
+            %p.username
+              Criado por
+              = @another_post.user.name
+            %p.buttons
+              %span
+                %i.fa.fa-comments-o
+                = @another_post.comments.count
+              %span
+                %i.fa.fa-thumbs-o-up
+                = @another_post.get_upvotes.size
+
+
+
+
 #comments
   - if user_signed_in?
     - if @post.comments.count > 1
@@ -40,6 +82,6 @@
           %p.username= comment.user.name
           %p.content= comment.content
 
-      = render 'comments/form'
+    = render 'comments/form'
   - else
     = link_to "Cadastre-se para ler os comentarios", new_user_registration_path, class: "logout"

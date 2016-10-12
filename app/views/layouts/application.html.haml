@@ -6,8 +6,16 @@
   = javascript_include_tag 'application'
   %link{:rel => "stylesheet", :href => "http://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.1/normalize.min.css"}
   %link{:rel => "stylesheet", :href => "http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"}
+  = yield :head
   = csrf_meta_tags
 %body
+  - if notice
+    #notice_wrapper
+      %p.notice= notice
+  - if alert
+    #alert_wrapper
+      %p.alert= alert
+
   %header
     .wrapper.clearfix
       #logo= link_to "Like-Image", root_path
@@ -19,7 +27,7 @@
         - else
           = link_to "Entrar", new_user_session_path
           = link_to "Cadastrar", new_user_registration_path, class: "button"
-  %p.notice= notice
-  %p.alert= alert
+
   .wrapper
+    
     =yield

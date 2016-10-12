@@ -11,9 +11,66 @@ h1, h2, h3, h4, h5, h6 {
 	font-weight: 100;
 }
 
+#notice_wrapper{
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 9999;
+  background: rgba(135,216,211,0.85);
+  .notice{
+    padding: 2.75rem 0;
+    text-align: center;
+    margin: 0;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #FFFFFF;
+    letter-spacing: 1px;
+  }
+}
+
+#alert_wrapper{
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 9999;
+  background: rgba(red, .8);
+  .alert{
+    padding: 2.75rem 0;
+    text-align: center;
+    margin: 0;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #FFFFFF;
+    letter-spacing: 1px;
+
+  }
+}
+
+.pagination{
+  width: 100%;
+  padding: 1rem 0;
+  text-align: center;
+
+  .previous_page, .next, .next_page, a{
+    background-color: #c9c9c9;
+    color: #FFF;
+    text-decoration: none;
+    padding: .4rem;
+    font-size: 1rem;
+    border-radius: 5px;
+  }
+  .current{
+    background-color: #50A7C7;
+    color: #FFF;
+    text-decoration: none;
+    font-size: 1rem;
+    padding: .4em;
+    border-radius: 5px;
+  }
+}
 .wrapper {
 	width: 80%;
-	margin: 0 auto;
+	margin:0 auto 80px auto;
 }
 
 .clearfix:before, .clearfix:after {

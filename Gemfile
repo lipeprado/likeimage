@@ -14,6 +14,7 @@ gem 'haml', '~> 4.0', '>= 4.0.7'
 gem 'simple_form', '~> 3.3', '>= 3.3.1'
 gem 'paperclip', '~> 5.1'
 gem 'acts_as_votable', '~> 0.10.0'
+gem 'will_paginate', '~> 3.1', '>= 3.1.3'
 
 group :development, :test do
   gem 'byebug', platform: :mri
