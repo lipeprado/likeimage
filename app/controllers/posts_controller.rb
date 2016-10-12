@@ -7,7 +7,7 @@ class PostsController < ApplicationController
   end
 
   def show
-
+    @comments = Comment.where(post_id: @post)
   end
 
 
@@ -49,7 +49,7 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:title, :link, :description)
+    params.require(:post).permit(:title, :link, :description, :image)
   end
 
 end

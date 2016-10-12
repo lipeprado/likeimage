@@ -9,6 +9,7 @@
     - if user_signed_in?
       %p= "Welcome #{current_user.name}"
       = link_to 'Sair', destroy_user_session_path, :method => :delete
+      = link_to "Nova Inspiração", new_post_path
     - else
       = link_to 'Entrar', new_user_session_path
       = link_to 'Criar Conta', new_user_registration_path
